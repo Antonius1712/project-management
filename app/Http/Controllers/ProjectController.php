@@ -59,7 +59,11 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $Categories = Category::all();
+        $Clients = Client::all();
+        $Developers = User::all();
+        $Payments = PaymentStatus::all();
+        return view('project.edit', compact('Categories', 'Clients', 'Developers', 'Payments', 'project'));
     }
 
     /**

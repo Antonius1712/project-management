@@ -44,9 +44,13 @@
                                 <td class="p-4 border">{{ $Project->payment->name }}</td>
                                 <td class="p-4 border">{{ $Project->start_date.' to '.$Project->end_date }}</td>
                                 <td class="p-4 border">
-                                    Edit
+                                    <a href="{{ route('project.edit', $Project) }}" class="inline-flex items-center px-4 py-2 bg-yellow-300 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-yellow-400 active:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 transition ease-in-out duration-150">Edit</a>
                                     |
-                                    Delete
+                                    <form onsubmit="confirm('Yakin Hapus?')" class="inline-block" action="{{ route('project.destroy', $Project) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <x-danger-button>Delete</x-danger-button>
+                                    </form>
                                 </td>
                             </tr>
                             @empty
